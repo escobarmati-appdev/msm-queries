@@ -22,6 +22,8 @@ class DirectorsController < ApplicationController
 
     @the_director = Director.where({ :id => the_id }).at(0)
     
+    @Filmography = Movie.where ({ :director_id => @the_director})  
+    
     render({ :template => "director_templates/director_details.html.erb"})
   end
  
