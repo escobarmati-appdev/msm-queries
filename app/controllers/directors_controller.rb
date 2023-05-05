@@ -15,6 +15,13 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/eldest.html.erb"})
   end
 
+  def youngest
+
+    @youngest_director = Director.all.where.not({ :dob => nil}).order({:dob => :desc }).at(0)
+
+    render({ :template => "director_templates/youngest.html.erb"})
+  end
+
   def  directors_details
     # params {"an_id"=>"youngest"} 
 
