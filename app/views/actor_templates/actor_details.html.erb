@@ -55,3 +55,33 @@
      %> ago
   </dd>
 </dl>
+
+<h2>Filmography</h2>
+
+<table border="1">
+<% @characters.each do |a_char|%>
+  <tr>
+    <td>
+    <%= a_char.id %>
+    </td>
+    <td>
+    <% m = Movie.where({ :id => a_char.movie_id }).at(0)  %>
+    <%= m.title %>
+    </td>
+    <td>
+    <%= m.year %>
+    </td>
+        <td>
+    <%= a_char.name %>
+    </td>
+    <td>
+    <% d = Director.where({ :id => m.director_id }).at(0)  %>
+    <%= d.name %>
+    </td>
+    <td>
+    <a href="/movies/<%= m.id %>">
+      Show details
+    </a>
+    </td>
+<% end %>
+</table>
